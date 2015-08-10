@@ -1,0 +1,27 @@
+#EXTM3U name="Imagenio"
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398608_2960E63286E466FE.jpg, Mentes criminales : Beneficencia
+http://127.0.0.1:4022/udp/239.0.9.131:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398622_7F60BC02E4EDBA64.jpg, Cine: El húsar en el tejado
+http://127.0.0.1:4022/udp/239.0.5.79:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398611_2129352880124130.jpg, Ley y Orden: Unidad de Víctimas Especiales : Deducción razonable
+http://127.0.0.1:4022/udp/239.0.5.74:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398623_B8D685B3160F087D.jpg, La que se avecina : Un chantaje, una exclusiva y un escandalo
+http://127.0.0.1:4022/udp/239.0.0.174:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398619_AF77CF3AF9841DF1.jpg, De la A a la Z : L de la desesperada aceptación
+http://127.0.0.1:4022/udp/239.0.5.71:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398609_55437C1DCC6BB448.jpg, Hawai 5.0 : Ohuna (El secreto)
+http://127.0.0.1:4022/udp/239.0.9.134:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398636_C54691E017D25524.jpg, Vuelve el padre de la novia (ahora también abuelo)
+http://127.0.0.1:4022/udp/239.0.5.76:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398615_97AFD627838B76AB.jpg, Superdetective en Hollywood II
+http://127.0.0.1:4022/udp/239.0.5.87:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398782_13DF6DD052D40B12.jpg, De sin a con: Episodio 4
+http://127.0.0.1:4022/udp/239.0.0.184:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=https://fut.tv.movistar.es/images/trash/channel.png, Movistar TV - Promocional
+http://127.0.0.1:4022/udp/239.0.0.77:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398637_FD6607DA0E290E1D.jpg, Syriana
+http://127.0.0.1:4022/udp/239.0.9.132:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398619_AF77CF3AF9841DF1.jpg, Entre fantasmas : En terreno resbaladizo
+http://127.0.0.1:4022/udp/239.0.5.86:8208
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398619_AF77CF3AF9841DF1.jpg, C+Estrenos HD dup/Contingencia HD3
+http://127.0.0.1:4022/udp/239.0.0.179:8208

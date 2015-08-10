@@ -1,0 +1,108 @@
+{
+    "canales": [
+        {
+            "id": "974",
+            "nombre_canal": "AXN HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398608_2960E63286E466FE.jpg",
+            "udp": "239.0.9.131:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "979",
+            "nombre_canal": "AXN WHITE HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398622_7F60BC02E4EDBA64.jpg",
+            "udp": "239.0.5.79:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "975",
+            "nombre_canal": "Calle 13 HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398611_2129352880124130.jpg",
+            "udp": "239.0.5.74:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "980",
+            "nombre_canal": "Comedy Central HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398623_B8D685B3160F087D.jpg",
+            "udp": "239.0.0.174:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "978",
+            "nombre_canal": "Cosmopolitan HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398619_AF77CF3AF9841DF1.jpg",
+            "udp": "239.0.5.71:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "973",
+            "nombre_canal": "FOX HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398609_55437C1DCC6BB448.jpg",
+            "udp": "239.0.9.134:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "992",
+            "nombre_canal": "Hollywood HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398636_C54691E017D25524.jpg",
+            "udp": "239.0.5.76:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "976",
+            "nombre_canal": "TNT HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398615_97AFD627838B76AB.jpg",
+            "udp": "239.0.5.87:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "861",
+            "nombre_canal": "Movistar Series HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398782_13DF6DD052D40B12.jpg",
+            "udp": "239.0.0.184:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "000",
+            "nombre_canal": "Movistar TV - Promocional",
+            "logo_canal": "https://fut.tv.movistar.es/images/trash/channel.png",
+            "udp": "239.0.0.77:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "993",
+            "nombre_canal": "AMC HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398637_FD6607DA0E290E1D.jpg",
+            "udp": "239.0.9.132:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "663",
+            "nombre_canal": "FOX life HD",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398619_AF77CF3AF9841DF1.jpg",
+            "udp": "239.0.5.86:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        },
+        {
+            "id": "782",
+            "nombre_canal": "C+Estrenos HD dup/Contingencia HD3",
+            "logo_canal": "http://media.gvp.telefonica.com/storagearea0/IMAGES/00/01/39/1398619_AF77CF3AF9841DF1.jpg",
+            "udp": "239.0.0.179:8208",
+            "img_emision": "",
+            "nombre_emision": ""
+        }
+    ]
+}
