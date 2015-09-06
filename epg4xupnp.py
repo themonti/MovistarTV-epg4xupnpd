@@ -17,7 +17,7 @@ sys.setdefaultencoding("utf-8")
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
+def epg4xupnp():
 	contenido=escribir_lista_m3u()
 	return contenido
     #return 'Hello World!'
