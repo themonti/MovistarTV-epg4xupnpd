@@ -23,7 +23,7 @@ def epg4xupnp():
     #return 'Hello World!'
 
 
-ENV='DEV'
+ENV='PROD'
 config = ConfigParser.ConfigParser()
 config.read('epg4xupnpd.cfg')
 
@@ -127,7 +127,7 @@ def escribir_lista_m3u():
 
 	epg=obtener_epg_imagenio()
 
-	str='#EXTM3U name="Imagenio"'
+	str='#EXTM3U name="Movistar+ - Remote"'
 	for canal in canales:
 		str_programa=buscar_canal_epg(canal["id"],epg)
 		if(str_programa==""):
