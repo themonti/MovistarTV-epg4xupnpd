@@ -18,8 +18,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-	escribir_lista_m3u()
-    return 'Hello World!'
+	contenido=escribir_lista_m3u()
+	return contenido
+    #return 'Hello World!'
 
 
 ENV='DEV'
@@ -133,8 +134,9 @@ def escribir_lista_m3u():
 			str_programa=canal["nombre_canal"]
 		str+=newline+"#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=%s, %s" % (canal["logo_canal"],str_programa)
 		str+=newline+"http://%s:4022/udp/%s" % (config.get(ENV, 'xupnpd-IP'),canal['udp'])
+	return str
 
-	file=end_m3u+"MovistarTV.m3u"
-	f = open(file, "w")
-	f.write(str)
-	f.close()
+	# file=end_m3u+"MovistarTV.m3u"
+	# f = open(file, "w")
+	# f.write(str)
+	# f.close()
