@@ -16,11 +16,15 @@ sys.setdefaultencoding("utf-8")
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/movistartv-epg4xupnp.m3u')
 def epg4xupnp():
 	contenido=escribir_lista_m3u()
 	return contenido
     #return 'Hello World!'
+
+@app.route('/')
+def lista():
+	return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3>'
 
 
 ENV='PROD'
@@ -127,7 +131,7 @@ def escribir_lista_m3u():
 
 	epg=obtener_epg_imagenio()
 
-	str='#EXTM3U name="Movistar+ - Remote"'
+	str='#EXTM3U name="Movistar+ | epg4xupnp"'
 	for canal in canales:
 		str_programa=buscar_canal_epg(canal["id"],epg)
 		if(str_programa==""):
