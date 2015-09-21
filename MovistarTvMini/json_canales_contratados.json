@@ -137,6 +137,12 @@
     "nombre": "Paramount Channel ",
     "url": "239.0.0.90:8208"
 }, {
+    "epg_name": "Neox",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/neox.jpg",
+    "id": "026",
+    "nombre": "Neox ",
+    "url": "239.0.0.107:8208"
+}, {
     "epg_name": "Divinity",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/divinity.jpg",
     "id": "083",
@@ -145,9 +151,15 @@
 }, {
     "epg_name": "Nova",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/nova.jpg",
- 	"id": "040",
+    "id": "040",
     "nombre": "Nova ",
     "url": "239.0.0.106:8208"
+}, {
+    "epg_name": "FDF",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/fdf.jpg",
+    "id": "025",
+    "nombre": "FDF",
+    "url": "239.0.0.84:8208"
 }, {
     "epg_name": "Movistar F1",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/multif1.jpg",
