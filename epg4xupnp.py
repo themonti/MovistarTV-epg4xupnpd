@@ -9,7 +9,7 @@ import json
 from datetime import datetime, date, time, timedelta
 from time import mktime
 import ConfigParser
-import time
+import pytz,time
 from bs4 import BeautifulSoup
 
 
@@ -39,6 +39,8 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
        'Accept-Encoding': 'none',
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
+
+local=pytz.timezone("Europe/Madrid")
 ########
 
 app = Flask(__name__)
@@ -114,9 +116,7 @@ def escribir_m3u(listadoEPG):
 
 	str='#EXTM3U name="MovistarTV EPG %s"' % time.strftime("%d-%m-%Y %H:%M")
 	for canal in canales:
-		str_programa=listadoEPG.get(canal["epg_name"],None)
-		if(str_programa==None):
-			str_programa=canal["nombre"]
+		str_programa=canal["nombre"] + '|' +" | ".join(listadoEPG.get(canal["epg_name"],"").split('comenzó'))
 		str+=newline+"#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=%s, %s" % (canal["logo"],str_programa)
 		str+=newline+"http://%s:4022/udp/%s" % (xupnpdIP,canal['url'])
 	return str
