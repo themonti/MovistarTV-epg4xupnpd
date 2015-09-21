@@ -136,7 +136,3 @@ def fetch(uri):
     content = page.read()
     return content
 #######################
-
-
-
-epg()
