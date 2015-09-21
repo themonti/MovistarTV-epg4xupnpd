@@ -42,16 +42,6 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
 ########
 
 app = Flask(__name__)
-
-
-
-### Necesario para que xupnp no de error del script lua
-@app.route('/movistartv-epg4xupnp.m3u')
-def epg4xupnp():
-	contenido=escribir_lista_m3u()
-	return contenido
-    #return 'Hello World!'
-
 ### App base
 @app.route('/')
 def lista():
