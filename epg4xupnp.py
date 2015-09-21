@@ -115,8 +115,10 @@ def escribir_m3u(listadoEPG):
 
 
 	str='#EXTM3U name="MovistarTV EPG %s"' % time.strftime("%d-%m-%Y %H:%M")
+	i=0
 	for canal in canales:
-		str_programa=canal["nombre"] + '|' +" | ".join(listadoEPG.get(canal["epg_name"],"").split('comenzó'))
+		i+=1
+		str_programa="[%s] %s | %s " % ("{:0>2d}".format(i),canal["nombre"], " | ".join(listadoEPG.get(canal["epg_name"],"").split('comenzó')))
 		str+=newline+"#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=%s, %s" % (canal["logo"],str_programa)
 		str+=newline+"http://%s:4022/udp/%s" % (xupnpdIP,canal['url'])
 	return str
