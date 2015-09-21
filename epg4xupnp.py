@@ -55,7 +55,7 @@ def epg():
 	listacanales=parserJSON_canales_contratados()
 	listadoEPG=parserWeb(listacanales)
 	
-	escribir_m3u(listadoEPG)
+	return escribir_m3u(listadoEPG)
 
 def parserJSON_canales_contratados():
 	data=loadJson(jsoncanales)
@@ -119,7 +119,7 @@ def escribir_m3u(listadoEPG):
 			str_programa=canal["nombre"]
 		str+=newline+"#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal logo=%s, %s" % (canal["logo"],str_programa)
 		str+=newline+"http://%s:4022/udp/%s" % (xupnpdIP,canal['url'])
-	print str
+	return str
 
 def loadJson(filename):
 	json_data=open(filename).read()
@@ -136,3 +136,6 @@ def fetch(uri):
     content = page.read()
     return content
 #######################
+
+if __name__ == "__main__":
+    app.run()

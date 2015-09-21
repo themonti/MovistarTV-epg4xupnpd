@@ -67,7 +67,7 @@ def epg():
 	listacanales=parserJSON_canales_contratados()
 	listadoEPG=parserWeb(listacanales)
 	
-	escribir_m3u(listadoEPG)
+	return escribir_m3u(listadoEPG)
 
 def parserJSON_canales_contratados():
 	data=loadJson(jsoncanales)
