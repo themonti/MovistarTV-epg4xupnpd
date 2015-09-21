@@ -4,7 +4,6 @@
     "id": "001",
     "nombre": "La 1 (HD)",
     "url": "239.0.0.185:8208"
-
 }, {
     "epg_name": "La 2",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tve2.jpg",
@@ -48,6 +47,24 @@
     "nombre": "Canal+ HD",
     "url": "239.0.5.187:8208"
 }, {
+    "epg_name": "Energy",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/energy.jpg",
+    "id": "086",
+    "nombre": "Energy ",
+    "url": "239.0.0.59:8208"
+}, {
+    "epg_name": "MEGA",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/mega.jpg",
+    "id": "085",
+    "nombre": "Mega ",
+    "url": "239.0.3.31:8208"
+}, {
+    "epg_name": "Garage TV",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/garagetv.jpg",
+    "id": "087",
+    "nombre": "Garage TV ",
+    "url": "239.0.0.99:8208"
+}, {
     "epg_name": "FOX",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/fox.jpg",
     "id": "013",
@@ -59,6 +76,12 @@
     "id": "014",
     "nombre": "AXN HD",
     "url": "239.0.9.131:8208"
+}, {
+    "epg_name": "AXN White",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/disneychannel.jpg",
+    "id": "021",
+    "nombre": "AXN White",
+    "url": "239.0.0.62:8208"
 }, {
     "epg_name": "TNT",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tnt.jpg",
@@ -102,6 +125,12 @@
     "nombre": "Disney Channel HD",
     "url": "239.0.0.173:8208"
 }, {
+    "epg_name": "Boing",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/boing.jpg",
+    "id": "097",
+    "nombre": "Boing ",
+    "url": "239.0.0.66:8208"
+}, {
     "epg_name": "Paramount C.",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/paramountchannel.jpg",
     "id": "040",
@@ -120,23 +149,29 @@
     "nombre": "Nova ",
     "url": "239.0.0.106:8208"
 }, {
-    "epg_name": "MEGA",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/mega.jpg",
-    "id": "085",
-    "nombre": "Mega ",
-    "url": "239.0.3.31:8208"
+    "epg_name": "Movistar F1",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/multif1.jpg",
+    "id": "221",
+    "nombre": "Multi F1",
+    "url": "239.0.3.29:8208"
 }, {
-    "epg_name": "Garage TV",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/garagetv.jpg",
-    "id": "087",
-    "nombre": "Garage TV ",
-    "url": "239.0.0.99:8208"
+    "epg_name": "Cplus EST",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+    "id": "096",
+    "nombre": "Pruebas DRM 2",
+    "url": "239.0.1.185:8208"
 }, {
-    "epg_name": "Boing",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/boing.jpg",
-    "id": "097",
-    "nombre": "Boing ",
-    "url": "239.0.0.66:8208"
+    "epg_name": "Cplus Liga",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-liga.jpg",
+    "id": "781",
+    "nombre": "Contingencia HD2",
+    "url": "239.0.0.182:8208"
+}, {
+    "epg_name": "Cplus EST",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+    "id": "771",
+    "nombre": "Pruebas DRM 2 HD",
+    "url": "239.0.0.181:8208"
 }, {
     "epg_name": "Canal 24 H.",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tve_24h.jpg",
@@ -173,35 +208,5 @@
     "id": "155",
     "nombre": "Aragon TV",
     "url": "239.0.0.81:8208"
-}, {
-    "epg_name": "AXN White",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/disneychannel.jpg",
-    "id": "021",
-    "nombre": "AXN White",
-    "url": "239.0.0.62:8208"
-}, {
-    "epg_name": "Movistar F1",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/multif1.jpg",
-    "id": "221",
-    "nombre": "Multi F1",
-    "url": "239.0.3.29:8208"
-}, {
-    "epg_name": "Cplus EST",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
-    "id": "096",
-    "nombre": "Pruebas DRM 2",
-    "url": "239.0.1.185:8208"
-}, {
-    "epg_name": "Cplus Liga",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-liga.jpg",
-    "id": "781",
-    "nombre": "Contingencia HD2",
-    "url": "239.0.0.182:8208"
-}, {
-    "epg_name": "Cplus EST",
-    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
-    "id": "771",
-    "nombre": "Pruebas DRM 2 HD",
-    "url": "239.0.0.181:8208"
 }]
 }
