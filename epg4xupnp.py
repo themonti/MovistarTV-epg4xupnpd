@@ -119,7 +119,10 @@ def escribir_m3u(listadoEPG):
 	for canal in canales:
 		i+=1
 		str_programa="[%s] %s | %s " % ("{:0>2d}".format(i),canal["nombre"], " | ".join(listadoEPG.get(canal["epg_name"],"").split('comenzó')))
-		str+=newline+"#EXTINF:-1 logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s" % (canal["logo"],str_programa[:40])
+		#### Limitación de caracteres [:40] para Samsung D/E Series
+		#str+=newline+"#EXTINF:-1 logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s" % (canal["logo"],str_programa[:40])
+        #### Sin limitación
+        str+=newline+"#EXTINF:-1 logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s" % (canal["logo"],str_programa)
 		str+=newline+"http://%s:4022/udp/%s" % (xupnpdIP,canal['url'])
 	return str
 
