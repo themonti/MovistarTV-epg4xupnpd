@@ -170,14 +170,26 @@
     "epg_name": "Cplus EST",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
     "id": "096",
+    "nombre": "Pruebas DRM SD",
+    "url": "239.0.1.181:8208"
+},{
+    "epg_name": "Cplus EST",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+    "id": "096",
     "nombre": "Pruebas DRM 2",
     "url": "239.0.1.185:8208"
+},{
+    "epg_name": "Cplus EST",
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+    "id": "096",
+    "nombre": "Pruebas DRM 2",
+    "url": "239.0.5.185:8208"
 }, {
     "epg_name": "Cplus Liga",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-liga.jpg",
     "id": "781",
-    "nombre": "Contingencia HD2",
-    "url": "239.0.0.182:8208"
+    "nombre": "Contingencia HD4",
+    "url": "239.0.0.183:8208"
 }, {
     "epg_name": "Cplus EST",
     "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
