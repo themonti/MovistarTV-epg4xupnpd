@@ -114,7 +114,9 @@ def escribir_m3u(listadoEPG):
 	newline='\n'
 
 
-	str='#EXTM3U name="MovistarTV EPG %s"' % time.strftime("%d-%m-%Y %H:%M")
+	str_group="MovistarTV EPG %s" % time.strftime("%H:%M [%d/%m/%y]")
+	str='#EXTM3U name="%s"' % str_group
+
 	i=0
 	for canal in canales:
 		i+=1
@@ -122,7 +124,7 @@ def escribir_m3u(listadoEPG):
 		#### Limitación de caracteres [:40] para Samsung D/E Series
 		#str+=newline+"#EXTINF:-1 logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s" % (canal["logo"],str_programa[:40])
 		#### Sin limitación
-		str+=newline+"#EXTINF:-1 logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s" % (canal["logo"],str_programa)
+		str+=newline+'#EXTINF:-1 group-title="%s" logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s' % (str_group,canal["logo"],str_programa)
 		str+=newline+"http://%s:4022/udp/%s" % (xupnpdIP,canal['url'])
 	return str
 
