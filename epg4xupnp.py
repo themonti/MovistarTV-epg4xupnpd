@@ -11,10 +11,22 @@ from time import mktime
 import ConfigParser
 import pytz,time
 from bs4 import BeautifulSoup
-
-
+from flask.ext.sqlalchemy import SQLAlchemy
 reload(sys)
 sys.setdefaultencoding("utf-8")
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vccnjnlifunbnm:9kFmSDyg8BWTe5wFDdf4IOau0Q@ec2-54-247-170-228.eu-west-1.compute.amazonaws.com:5432/d9msst1obko80b'
+db = SQLAlchemy(app)
+
+class Canal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(255))
+    ip = db.Column(db.String(255))
+    port = db.Column(db.String(255))
+    numcanal = db.Column(db.String(255))
+    nombrecorto = db.Column(db.String(255))
+
 
 ### Configuracion Base
 ENV='PROD'
