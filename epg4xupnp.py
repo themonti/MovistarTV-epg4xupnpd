@@ -114,7 +114,7 @@ def escribir_m3u(listadoEPG):
 	newline='\n'
 
 
-	str_group="MovistarTV EPG %s" % time.strftime("%H:%M [%d/%m/%y]")
+	str_group="MovistarTV: %s" % time.strftime("%H:%M [%d/%m/%y]")
 	str='#EXTM3U name="%s"' % str_group
 
 	i=0
