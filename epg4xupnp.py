@@ -12,34 +12,11 @@ import ConfigParser
 import pytz,time
 from bs4 import BeautifulSoup
 from flask.ext.sqlalchemy import SQLAlchemy
+
+### Configuracion Base
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vccnjnlifunbnm:9kFmSDyg8BWTe5wFDdf4IOau0Q@ec2-54-247-170-228.eu-west-1.compute.amazonaws.com:5432/d9msst1obko80b'
-db = SQLAlchemy(app)
-
-class Canales(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(255))
-    ip = db.Column(db.String(255))
-    port = db.Column(db.String(255))
-    numcanal = db.Column(db.String(255))
-    nombrecorto = db.Column(db.String(255))
-
-    def __init__(self, nombre, ip,port,numcanal,nombrecorto):
-        self.nombre = nombre
-        self.ip = ip
-        self.port = port
-        self.numcanal = numcanal
-        self.nombrecorto = nombrecorto
-        
-    def __repr__(self):
-        return '<Canal %r>' % self.nombre
-
-
-
-### Configuracion Base
 ENV='PROD'
 config = ConfigParser.ConfigParser()
 config.read('epg4xupnpd.cfg')
@@ -66,24 +43,98 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
 os.environ['TZ'] ='Europe/Madrid'
 ########
 
+
+############################
+#### Iniciamos la app  #####
+############################
 app = Flask(__name__)
 app.debug = True
-### App base
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+############################
+############################
+
+
+################################
+# Configuracion DATABASE HEROKU
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vccnjnlifunbnm:9kFmSDyg8BWTe5wFDdf4IOau0Q@ec2-54-247-170-228.eu-west-1.compute.amazonaws.com:5432/d9msst1obko80b'
+db = SQLAlchemy(app)
+
+# TABLA CANALES: definicion
+class Canales(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(255))
+    ip = db.Column(db.String(255))
+    port = db.Column(db.String(255))
+    numcanal = db.Column(db.String(255))
+    nombrecorto = db.Column(db.String(255))
+
+    def __init__(self, nombre, ip,port,numcanal,nombrecorto):
+        self.nombre = nombre
+        self.ip = ip
+        self.port = port
+        self.numcanal = numcanal
+        self.nombrecorto = nombrecorto
+        
+    def __repr__(self):
+        return '<Canal %r>' % self.nombre
+########################################################
+
+
+
+
+
+### ROUTE /
+@app.route('/')
+def lista():
+    allU=Canales.query.all()
+    cadena=''
+    for s in allU:
+        cadena+='<tr><td>%s</td><td>%s</td><td><a href="rtp://@%s:%s">Ver</a></td></tr>'%(s.nombre,s.nombrecorto,s.ip,s.port)
+    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><table><tr><th>Nombre</th><th>Nombre corto</th>%s</table><p></p><p></p><h5>v0.3</h5>'%(cadena)
+    
+
+### ROUTE /edit
+@app.route('/edit', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        # lectura del cml en vivo
+        xmlcanales=file.stream.read()
+        soup = BeautifulSoup(xmlcanales,"xml")
+        data=soup.find_all('UI-BroadcastService')
+        # se borra la db actual
+        status=borrarCanales()
+        print "BORRADO db :",status
+        
+        # Parseamos el XML
+        cadena=""
+        for tag in data:
+            if tag.IsInactive==None:
+                # se graban los canales en la db
+                status=grabarCanal(tag.SI.Name.text,tag.ServiceLocation.IPMulticastAddress['Address'],tag.ServiceLocation.IPMulticastAddress['Port'],tag.ServiceLogicalNumber.text,tag.SI.ShortName.text)
+                cadena+='%s: %s<br/>'%(tag.SI.Name.text,status)
+        # se hace el commit Masivo en db
+        status=commitMasivo()
+        print "COMMIT db: ",status
+
+        return 'CANALES:<br/> %s<br/><br/>Commit Masivo: %s ' % (cadena,status)
+    #presentacion del formulario de subida
+    return '''
+    <!doctype html>
+    <title>Nuevo listado de canales activos</title>
+    <h1>Nuevo listado de canales activos (.xml)</h1>
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>'''
+### FUNCIONES DE APOYO A /edit   
+# subir ficheros
+ALLOWED_EXTENSIONS = set(['xml'])
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/')
-def lista():
-    allU=Canales.query.all()
-    for s in allU:
-        print s.nombre
-    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p>%s<p></p><p></p><h5>v0.3</h5>'%('')
-    
-
-
+# borrar canales de la db
 def borrarCanales():
     status=False
     try:
@@ -94,6 +145,7 @@ def borrarCanales():
         db.session.rollback()
     return status
 
+# grabar canales en la db - Solo session, sin commit
 def grabarCanal(nombre,ip,port,numcanal,nombrecorto):
     status=False
     try:
@@ -104,6 +156,8 @@ def grabarCanal(nombre,ip,port,numcanal,nombrecorto):
     except:
         db.session.rollback()
     return status
+
+# commit Masivo en db
 def commitMasivo():
     status=False
     try:
@@ -112,34 +166,24 @@ def commitMasivo():
     except:
         db.session.rollback()
     return status
+##########
 
-@app.route('/edit', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        file = request.files['file']
-        xmlcanales=file.stream.read()
-        soup = BeautifulSoup(xmlcanales,"xml")
-        data=soup.find_all('UI-BroadcastService')
-        status=borrarCanales()
-        print "BORRADO:",status
-        cadena=""
-        for tag in data:
-            if tag.IsInactive==None:
-                status=grabarCanal(tag.SI.Name.text,tag.ServiceLocation.IPMulticastAddress['Address'],tag.ServiceLocation.IPMulticastAddress['Port'],tag.ServiceLogicalNumber.text,tag.SI.ShortName.text)
-                cadena+='%s: %s<br/>'%(tag.SI.Name.text,status)
-        status=commitMasivo()
-        return 'CANALES:<br/> %s<br/><br/>Commit Masivo: %s ' % (cadena,status)
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>'''
+
    
-#### 20 Septiembre 2015
+### Nueva versión de la exportancion desde la db
+@app.route('/epg2.m3u')
+def epg2():
+    allU=Canales.query.order_by(Canales.numcanal).all()
+    newline='\n'
+    cadena='#EXTM3U name="NewMovistar"'
+    
+    for s in allU:
+        cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[%s] %s' % (newline,s.numcanal,s.nombre)
+        cadena+='%shttp://%s:4022/udp/%s:%s' % (newline,xupnpdIP,s.ip,s.port)
+    return cadena
+    
 
+#### 20 Septiembre 2015
 ### Necesario para que xupnp no de error del script lua
 @app.route('/epg.m3u')
 def epg():

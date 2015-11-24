@@ -1,0 +1,236 @@
+{"canales":[{
+    "web_canal": "LA1HD",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tve1.jpg",
+    
+}, {
+    "web_canal": "La 2",
+    "canaldb":"La 2",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tve2.jpg",
+    
+}, {
+    "web_canal": "Antena 3",
+    "canaldb":"A3HD",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/antena3.jpg",
+    
+}, {
+    "web_canal": "Cuatro",
+    "canaldb":"CUATR",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canalcuatro.jpg",
+    
+}, {
+    "web_canal": "Tele 5",
+    "canaldb":"T5",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tele5.jpg",
+    
+}, {
+    "web_canal": "laSexta",
+    "canaldb":"LSXHD",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/lasexta.jpg",
+    
+}, {
+    "web_canal": "Discov.Max",
+    "canaldb":"TVCi",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/discoverychannel.jpg",
+    
+}, {
+    "web_canal": "Cplus 1",
+    "canaldb":"C+HD",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus.jpg",
+    
+}, {
+    "web_canal": "Energy",
+    "canaldb":"energ",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/energy.jpg",
+    
+}, {
+    "web_canal": "MEGA",
+    "canaldb":"MEGA",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/mega.jpg",
+    
+}, {
+    "web_canal": "Garage TV",
+    "canaldb":"GARAG",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/garagetv.jpg",
+    
+}, {
+    "web_canal": "FOX",
+    "canaldb":"FOXHD",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/fox.jpg",
+    
+}, {
+    "web_canal": "AXN",
+    "canaldb":"AXNHD",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/axn.jpg",
+    
+}, {
+    "web_canal": "AXN White",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/disneychannel.jpg",
+    
+}, {
+    "web_canal": "TNT",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tnt.jpg",
+    
+}, {
+    "web_canal": "Comedy Central",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/comedy-central.jpg",
+    
+}, {
+    "web_canal": "Calle 13",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/calle13-44x36.jpg",
+    
+}, {
+    "web_canal": "Cosmo",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/cosmo.jpg",
+    
+}, {
+    "web_canal": "HWD",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/hollywood.jpg",
+    
+}, {
+    "web_canal": "Teledeporte",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/teledeporte.jpg",
+    
+}, {
+    "web_canal": "Disney Ch.",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/disneychannel.jpg",
+    
+}, {
+    "web_canal": "Boing",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/boing.jpg",
+    
+}, {
+    "web_canal": "Paramount C.",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/paramountchannel.jpg",
+    
+}, {
+    "web_canal": "Neox",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/neox.jpg",
+    
+}, {
+    "web_canal": "Divinity",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/divinity.jpg",
+    
+}, {
+    "web_canal": "Nova",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/nova.jpg",
+    
+}, {
+    "web_canal": "FDF",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/fdf.jpg",
+    
+}, {
+    "web_canal": "Movistar F1",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/multif1.jpg",
+    
+}, {
+    "web_canal": "Cplus EST",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+     
+},{
+    "web_canal": "Cplus EST",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+    
+},{
+    "web_canal": "Cplus EST",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+    
+}, {
+    "web_canal": "Cplus Liga",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-liga.jpg",
+    
+}, {
+    "web_canal": "Cplus EST",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/canal-plus-estrenos.jpg",
+    
+}, {
+    "web_canal": "Canal 24 H.",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tve_24h.jpg",
+    
+}, {
+    "web_canal": "Inter TV",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/intereconomia.jpg",
+    
+}, {
+    "web_canal": "Galicia TV Europa",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/galiciatv.jpg",
+    
+}, {
+    "web_canal": "TV3CAT",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tv3cat.jpg",
+    
+}, {
+    "web_canal": "TV3",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/tv3.jpg",
+    
+}, {
+    "web_canal": "Aragón TV",
+    "canaldb":"",
+
+    "logo": "http://www.movistar.es/estaticos/imagenes/tv-ocio/imagenes/logos-tv/140x114/aragontv.jpg",
+    
+    }]
+}
