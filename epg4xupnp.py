@@ -180,7 +180,7 @@ def epg2():
     for s in allU:
         cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[%s] %s' % (newline,s.numcanal,s.nombre)
         cadena+='%shttp://%s:4022/udp/%s:%s' % (newline,xupnpdIP,s.ip,s.port)
-    cadena+='''#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",Brazzers
+    cadena+=newline+'''#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",Brazzers
 http://server9.balkantvmedia.com:8080/XXX1?u=user173:p=7wdjPw59
 #EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",Hustler
 http://server4.balkantvmedia.com:8080/XXX2?u=user173:p=7wdjPw59
