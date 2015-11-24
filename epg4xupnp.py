@@ -188,8 +188,6 @@ http://server4.balkantvmedia.com:8080/XXX2?u=user173:p=7wdjPw59
 http://server4.balkantvmedia.com:8080/XXX3?u=user173:p=7wdjPw59
 #EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] PASSION XXX
 http://q.gs/9830047/sex3todokodi
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] HUSTLER HD
-http://bit.ly/1jGYwsX
 #EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar,[ADULT] Xtsy XXX
 http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=31
 #EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar,[ADULT] uicy XXX
@@ -202,6 +200,8 @@ http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6
 http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=25
 #EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar,[ADULT] Playboy TV Latin America
 http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=28
+#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] HUSTLER HD
+http://bit.ly/1jGYwsX
 '''
 
     return cadena
