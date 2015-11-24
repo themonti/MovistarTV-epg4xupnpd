@@ -1,7 +1,7 @@
 
 # -*- coding: utf-8 -*-
 import os
-from flask import Flask
+from flask import Flask, request, redirect, url_for
 import sys
 import cookielib
 import urllib2
@@ -19,13 +19,24 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vccnjnlifunbnm:9kFmSDyg8BWTe5wFDdf4IOau0Q@ec2-54-247-170-228.eu-west-1.compute.amazonaws.com:5432/d9msst1obko80b'
 db = SQLAlchemy(app)
 
-class Canal(db.Model):
+class Canales(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(255))
     ip = db.Column(db.String(255))
     port = db.Column(db.String(255))
     numcanal = db.Column(db.String(255))
     nombrecorto = db.Column(db.String(255))
+
+    def __init__(self, nombre, ip,port,numcanal,nombrecorto):
+        self.nombre = nombre
+        self.ip = ip
+        self.port = port
+        self.numcanal = numcanal
+        self.nombrecorto = nombrecorto
+        
+    def __repr__(self):
+        return '<Canal %r>' % self.nombre
+
 
 
 ### Configuracion Base
@@ -56,102 +67,168 @@ os.environ['TZ'] ='Europe/Madrid'
 ########
 
 app = Flask(__name__)
+app.debug = True
 ### App base
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
 @app.route('/')
 def lista():
-	return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><p></p><p></p><h5>v0.2</h5>'
+    allU=Canales.query.all()
+    for s in allU:
+        print s.nombre
+    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p>%s<p></p><p></p><h5>v0.3</h5>'%('')
+    
 
+
+def borrarCanales():
+    status=False
+    try:
+        num_rows_deleted = db.session.query(Canales).delete()
+        db.session.commit()
+        status=True
+    except:
+        db.session.rollback()
+    return status
+
+def grabarCanal(nombre,ip,port,numcanal,nombrecorto):
+    status=False
+    try:
+        canal = Canales(nombre,ip,port,numcanal,nombrecorto)
+        db.session.add(canal)
+        # db.session.commit()
+        status=True
+    except:
+        db.session.rollback()
+    return status
+def commitMasivo():
+    status=False
+    try:
+        db.session.commit()
+        status=True
+    except:
+        db.session.rollback()
+    return status
+
+@app.route('/edit', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        xmlcanales=file.stream.read()
+        soup = BeautifulSoup(xmlcanales,"xml")
+        data=soup.find_all('UI-BroadcastService')
+        status=borrarCanales()
+        print "BORRADO:",status
+        cadena=""
+        for tag in data:
+            if tag.IsInactive==None:
+                status=grabarCanal(tag.SI.Name.text,tag.ServiceLocation.IPMulticastAddress['Address'],tag.ServiceLocation.IPMulticastAddress['Port'],tag.ServiceLogicalNumber.text,tag.SI.ShortName.text)
+                cadena+='%s: %s<br/>'%(tag.SI.Name.text,status)
+        status=commitMasivo()
+        return 'CANALES:<br/> %s<br/><br/>Commit Masivo: %s ' % (cadena,status)
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>'''
+   
 #### 20 Septiembre 2015
 
 ### Necesario para que xupnp no de error del script lua
 @app.route('/epg.m3u')
 def epg():
-	listacanales=parserJSON_canales_contratados()
-	listadoEPG=parserWeb(listacanales)
-	
-	return escribir_m3u(listadoEPG)
+    listacanales=parserJSON_canales_contratados()
+    listadoEPG=parserWeb(listacanales)
+    
+    return escribir_m3u(listadoEPG)
 
 def parserJSON_canales_contratados():
-	data=loadJson(jsoncanales)
+    data=loadJson(jsoncanales)
 
-	canales=data["canales"]
-	lista_canales=[]
-	for canal in canales:
-		#print canal["id"],canal['nombre_canal']
-		lista_canales.append(canal["epg_name"])
-	#return ','.join(lista_canales)
-	return lista_canales
+    canales=data["canales"]
+    lista_canales=[]
+    for canal in canales:
+        #print canal["id"],canal['nombre_canal']
+        lista_canales.append(canal["epg_name"])
+    #return ','.join(lista_canales)
+    return lista_canales
 
 def parserWeb(listacanales):
-	# print "#"+urlEPG+"#"
-	page=fetch(urlEPG)
-	# print page
-	parsed_html = BeautifulSoup(page,"html.parser")
+    # print "#"+urlEPG+"#"
+    page=fetch(urlEPG)
+    # print page
+    parsed_html = BeautifulSoup(page,"html.parser")
 
-	###Elininado: creamos un diccionario para busqueda directa. El problema es que hay mas canales que no estan en la pagina
-	# Se crean 2 lista para guardar el nombre de canal y la programacion en si
-	# list_epg_nombre=[]
-	# list_epg=[]
-	listadoEPG={}
+    ###Elininado: creamos un diccionario para busqueda directa. El problema es que hay mas canales que no estan en la pagina
+    # Se crean 2 lista para guardar el nombre de canal y la programacion en si
+    # list_epg_nombre=[]
+    # list_epg=[]
+    listadoEPG={}
 
-	# Como hay filas con estilos diferentes para los canales, se unen las dos
-	listado_completo=parsed_html.body.find_all('tr', attrs={'class':'lineas0'})+parsed_html.body.find_all('tr', attrs={'class':'lineas1'})
-	
-	# unimos la lista de canales contratados en forma de cadena para realizar comparacioens por busqueda
-	listado_canales_contratados=','.join(listacanales)
-	for tr in listado_completo:
-		# se extrae el nombre del canal de la web
-		canal=tr.find('td',attrs={'valign':'top'}).text
+    # Como hay filas con estilos diferentes para los canales, se unen las dos
+    listado_completo=parsed_html.body.find_all('tr', attrs={'class':'lineas0'})+parsed_html.body.find_all('tr', attrs={'class':'lineas1'})
+    
+    # unimos la lista de canales contratados en forma de cadena para realizar comparacioens por busqueda
+    listado_canales_contratados=','.join(listacanales)
+    for tr in listado_completo:
+        # se extrae el nombre del canal de la web
+        canal=tr.find('td',attrs={'valign':'top'}).text
 
-		# si coinicide el canal, se agregan a la lista el nombre de canal y la programacion
-		if canal in listado_canales_contratados:
-			###Elininado: creamos un diccionario para busqueda directa
-			# list_epg_nombre.append(canal)
-			# list_epg.append(tr.find('td',attrs={'width':'70%'}).text)
-			listadoEPG[canal]=tr.find('td',attrs={'width':'70%'}).text
-	
-	###Elininado: creamos un diccionario para busqueda directa, ya no hace falta ordenar
-	# Se ordena el listado final de canales encontrados en funcion de la lista de canales contratados 
-	#listado=zip(list_epg_nombre,list_epg)
-	#listado.sort(key=lambda x: listacanales.index(x[0]))
+        # si coinicide el canal, se agregan a la lista el nombre de canal y la programacion
+        if canal in listado_canales_contratados:
+            ###Elininado: creamos un diccionario para busqueda directa
+            # list_epg_nombre.append(canal)
+            # list_epg.append(tr.find('td',attrs={'width':'70%'}).text)
+            listadoEPG[canal]=tr.find('td',attrs={'width':'70%'}).text
+    
+    ###Elininado: creamos un diccionario para busqueda directa, ya no hace falta ordenar
+    # Se ordena el listado final de canales encontrados en funcion de la lista de canales contratados 
+    #listado=zip(list_epg_nombre,list_epg)
+    #listado.sort(key=lambda x: listacanales.index(x[0]))
 
-	#Devolvemos el listado de canales definitivo ordenado
-	return listadoEPG
+    #Devolvemos el listado de canales definitivo ordenado
+    return listadoEPG
 
 def escribir_m3u(listadoEPG):
-	data=loadJson(jsoncanales)
-	canales=data['canales']
-	# print canales
+    data=loadJson(jsoncanales)
+    canales=data['canales']
+    # print canales
 
-	newline='\n'
+    newline='\n'
 
 
-	str_group="MovistarTV %s" % time.strftime("%H:%M [%d/%m/%y]")
-	str='#EXTM3U name="%s"' % str_group
+    str_group="MovistarTV %s" % time.strftime("%H:%M [%d/%m/%y]")
+    str='#EXTM3U name="%s"' % str_group
 
-	i=0
-	for canal in canales:
-		i+=1
-		str_programa="[%s] %s | %s " % ("{:0>2d}".format(i),canal["nombre"], " | ".join(listadoEPG.get(canal["epg_name"],"").split('comenzó')))
-		#### Limitación de caracteres [:40] para Samsung D/E Series
-		#str+=newline+"#EXTINF:-1 logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s" % (canal["logo"],str_programa[:40])
-		#### Sin limitación
-		str+=newline+'#EXTINF:-1 group-title="%s" logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s' % (str_group,canal["logo"],str_programa)
-		str+=newline+"http://%s:4022/udp/%s" % (xupnpdIP,canal['url'])
-	return str
+    i=0
+    for canal in canales:
+        i+=1
+        str_programa="[%s] %s | %s " % ("{:0>2d}".format(i),canal["nombre"], " | ".join(listadoEPG.get(canal["epg_name"],"").split('comenzó')))
+        #### Limitación de caracteres [:40] para Samsung D/E Series
+        #str+=newline+"#EXTINF:-1 logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s" % (canal["logo"],str_programa[:40])
+        #### Sin limitación
+        str+=newline+'#EXTINF:-1 group-title="%s" logo=%s type=mpeg dlna_extras=mpeg_ps_pal , %s' % (str_group,canal["logo"],str_programa)
+        str+=newline+"http://%s:4022/udp/%s" % (xupnpdIP,canal['url'])
+    return str
 
 def loadJson(filename):
-	json_data=open(filename).read()
+    json_data=open(filename).read()
 
-	return json.loads(json_data)
+    return json.loads(json_data)
 
 def fetch(uri):
     req = urllib2.Request(uri,headers=hdr)
     ##return opener.open(req)
     #try:
     page = urllib2.urlopen(req)
-	#except urllib2.HTTPError, e:
-    #	print e.fp.read()
+    #except urllib2.HTTPError, e:
+    #    print e.fp.read()
     content = page.read()
     return content
 #######################
