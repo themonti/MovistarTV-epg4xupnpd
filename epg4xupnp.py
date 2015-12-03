@@ -89,7 +89,7 @@ def lista():
     cadena=''
     for s in allU:
         cadena+='<tr><td>%s</td><td>%s</td><td><a href="rtp://@%s:%s">Ver</a></td></tr>'%(s.nombre,s.nombrecorto,s.ip,s.port)
-    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><table><tr><th>Nombre</th><th>Nombre corto</th>%s</table><p></p><p></p><h5>v0.3</h5>'%(cadena)
+    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><table><tr><th>Nombre</th><th>Nombre corto</th>%s</table><p></p><p></p><h5>v0.4</h5>'%(cadena)
     
 
 ### ROUTE /edit
@@ -213,14 +213,17 @@ def epg2():
     listadoEPG=epgMovistar()
     
     for s in allU:
+        logo=''
+        prog=''
         k=int(filter(str.isdigit, str(s.numcanal)))
         if k in listadoEPG.keys():
             logo=listadoEPG[k]['logo']
             prog=listadoEPG[k]['prog']
-            # cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar" logo=%s,[%s] %s' % (newline,s.numcanal,s.nombre)
-            cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar" logo=%s,[%s] %s-%s' % (newline,logo,s.numcanal,s.nombre,prog)
-            cadena+='%shttp://%s:4022/udp/%s:%s' % (newline,xupnpdIP,s.ip,s.port)
-    
+        
+        # cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar" logo=%s,[%s] %s' % (newline,s.numcanal,s.nombre)
+        cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar" logo=%s,[%s] %s|%s' % (newline,logo,s.numcanal,s.nombre,prog)
+        cadena+='%shttp://%s:4022/udp/%s:%s' % (newline,xupnpdIP,s.ip,s.port)
+
 
     return cadena
     
