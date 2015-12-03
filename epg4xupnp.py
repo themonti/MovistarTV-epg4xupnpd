@@ -207,7 +207,7 @@ def epgMovistar():
 @app.route('/epg2.m3u')
 def epg2():
     allU=Canales.query.order_by(Canales.numcanal).all()
-    newline='<br/>'
+    newline='\n'
     cadena='#EXTM3U name="NewMovistar"'
 
     listadoEPG=epgMovistar()
