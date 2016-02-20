@@ -55,7 +55,7 @@ app.debug = True
 
 ################################
 # Configuracion DATABASE HEROKU
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://vccnjnlifunbnm:9kFmSDyg8BWTe5wFDdf4IOau0Q@ec2-54-247-170-228.eu-west-1.compute.amazonaws.com:5432/d9msst1obko80b'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://pbmxyuemihmrqt:siqD1LMCZjfxYcgJfpKj7Ub92s@ec2-54-228-246-42.eu-west-1.compute.amazonaws.com:5432/d228gaec77uoa9'
 db = SQLAlchemy(app)
 
 # TABLA CANALES: definicion
