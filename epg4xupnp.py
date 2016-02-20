@@ -58,7 +58,7 @@ version='v0.5'  #20 Febrero 2015
 
 ################################
 # Configuracion DATABASE HEROKU
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://pbmxyuemihmrqt:siqD1LMCZjfxYcgJfpKj7Ub92s@ec2-54-228-246-42.eu-west-1.compute.amazonaws.com:5432/d228gaec77uoa9'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ["DATABASE_URL"]
 db = SQLAlchemy(app)
 
 # TABLA CANALES: definicion
