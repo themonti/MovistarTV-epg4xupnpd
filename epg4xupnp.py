@@ -49,6 +49,9 @@ os.environ['TZ'] ='Europe/Madrid'
 ############################
 app = Flask(__name__)
 app.debug = True
+
+version='v0.5'  #20 Febrero 2015
+
 ############################
 ############################
 
@@ -89,7 +92,7 @@ def lista():
     cadena=''
     for s in allU:
         cadena+='<tr><td>%s</td><td>%s</td><td><a href="rtp://@%s:%s">Ver</a></td></tr>'%(s.nombre,s.nombrecorto,s.ip,s.port)
-    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><table><tr><th>Nombre</th><th>Nombre corto</th>%s</table><p></p><p></p><h5>v0.4</h5>'%(cadena)
+    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><table><tr><th>Nombre</th><th>Nombre corto</th>%s</table><p></p><p></p><h5>%s</h5>'%(cadena,version)
     
 
 ### ROUTE /edit
