@@ -89,7 +89,7 @@ def lista():
     cadena=''
     for s in allU:
         cadena+='<tr><td>%s</td><td>%s</td><td><a href="rtp://@%s:%s">Ver</a></td></tr>'%(s.nombre,s.nombrecorto,s.ip,s.port)
-    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><table><tr><th>Nombre</th><th>Nombre corto</th>%s</table><p></p><p></p><h5>v0.3</h5>'%(cadena)
+    return '<h1>Movistar TV</h1><h3>epg 4 xupnp</h3><p></p><p></p><table><tr><th>Nombre</th><th>Nombre corto</th>%s</table><p></p><p></p><h5>v0.4</h5>'%(cadena)
     
 
 ### ROUTE /edit
@@ -169,40 +169,61 @@ def commitMasivo():
 ##########
 
 
-   
+def epgMovistar():
+    urlEPG='http://www.formulatv.com/programacion/movistarplus/'
+    page=fetch(urlEPG)
+    # print page
+    parsed_html = BeautifulSoup(page,"html.parser")
+
+    ###Elininado: creamos un diccionario para busqueda directa. El problema es que hay mas canales que no estan en la pagina
+    # Se crean 2 lista para guardar el nombre de canal y la programacion en si
+    # list_epg_nombre=[]
+    # list_epg=[]
+    listadoEPG={}
+
+    # Como hay filas con estilos diferentes para los canales, se unen las dos
+    listado_completo=parsed_html.body.find_all('tr')
+    newline='<br/>'
+    p=""
+    # unimos la lista de canales contratados en forma de cadena para realizar comparacioens por busqueda
+    for tr in listado_completo:
+        # se extrae el nombre del canal de la web
+        if tr.find(attrs={'class':'prga-d'})!=None:
+            idcanal=int(tr.find(attrs={'class':'num'}).text)
+            logo=tr.find(attrs={'class':'lcad'})['src']
+            prog=tr.find(attrs={'class':'prga-p'}).text
+            # p+='%s%s[%s]-%s '%(newline,idcanal,logo,programa)
+            programa={}
+            programa["logo"]=logo
+            programa["prog"]=prog
+            listadoEPG[idcanal]=programa
+        
+
+    #Devolvemos el listado de canales definitivo ordenado
+    # print listadoEPG
+    return listadoEPG
+
 ### Nueva versión de la exportancion desde la db
 @app.route('/epg2.m3u')
 def epg2():
     allU=Canales.query.order_by(Canales.numcanal).all()
     newline='\n'
     cadena='#EXTM3U name="NewMovistar"'
+
+    listadoEPG=epgMovistar()
     
     for s in allU:
-        cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[%s] %s' % (newline,s.numcanal,s.nombre)
+        logo=''
+        prog=''
+        k=int(filter(str.isdigit, str(s.numcanal)))
+        if k in listadoEPG.keys():
+            logo=listadoEPG[k]['logo']
+            prog=listadoEPG[k]['prog']
+        
+        # cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar" logo=%s,[%s] %s' % (newline,s.numcanal,s.nombre)
+        cadena+='%s#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar" logo=%s,[%s] %s|%s' % (newline,logo,s.numcanal,s.nombre,prog)
         cadena+='%shttp://%s:4022/udp/%s:%s' % (newline,xupnpdIP,s.ip,s.port)
-    cadena+=newline+'''#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Brazzers
-http://server9.balkantvmedia.com:8080/XXX1?u=user173:p=7wdjPw59
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Hustler
-http://server4.balkantvmedia.com:8080/XXX2?u=user173:p=7wdjPw59
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Dorcel
-http://server4.balkantvmedia.com:8080/XXX3?u=user173:p=7wdjPw59
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] PASSION XXX
-http://q.gs/9830047/sex3todokodi
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Xtsy XXX
-http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=31
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] uicy XXX
-http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=30
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Real XXX
-http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=29
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Sextreme XXX
-http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=26
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Venus XXX
-http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=25
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] Playboy TV Latin America
-http://public.tuiptv.biz/public/PlayList.php?id=20e12547-5adb-4dc6-89af-41e6e7e6d4f3&channel=28
-#EXTINF:-1 type=mpeg dlna_extras=mpeg_ps_pal group-title="NewMovistar",[ADULT] HUSTLER HD
-http://bit.ly/1jGYwsX
-'''
+
 
     return cadena
     
