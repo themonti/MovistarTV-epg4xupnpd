@@ -211,7 +211,7 @@ def epgMovistar():
 def epg2():
     allU=Canales.query.order_by(Canales.numcanal).all()
     newline='\n'
-    cadena='#EXTM3U name="NewMovistar"'
+    cadena='#EXTM3U name="NewMovistar - %s"' % (time.strftime("%d-%m-%Y %H:%M"))
 
     listadoEPG=epgMovistar()
     
