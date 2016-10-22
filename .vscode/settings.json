@@ -1,0 +1,28 @@
+// Coloque su configuración en este archivo para sobrescribir la configuración predeterminada y de usuario.
+{
+    "python.pythonPath": "${workspaceRoot}/venv/bin/python",
+
+    "python.autoComplete.extraPaths": [
+        "${workspaceRoot}/venv/lib/python2.7/site-packages"
+    ],
+    "python.devOptions": [
+        "DEBUG"
+    ],
+    "python.unitTest.unittestEnabled": true,
+    "python.unitTest.pyTestEnabled": true,
+    "python.unitTest.nosetestsEnabled": false,
+
+    // Extension and editor preferences
+
+    "files.insertFinalNewline": true,
+    "editor.roundedSelection": false,
+    "explorer.openEditors.visible": 0,
+    "trailing-spaces.trimOnSave": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        ".vscode": true,
+        "**/__pycache__": true,
+        "**/**/*.pyc": true
+    }
+}
